@@ -1,3 +1,4 @@
+cat > install.sh << 'EOL'
 #!/bin/bash
 
 # Colors
@@ -18,7 +19,7 @@ mkdir -p $PREFIX/bin
 
 # Create main script
 echo -e "${GREEN}Creating screen sharing script...${NC}"
-cat > $PREFIX/bin/screensh << 'EOL'
+cat > $PREFIX/bin/screensh << 'EOLSCRIPT'
 #!/usr/bin/python
 
 import os
@@ -255,7 +256,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-EOL
+EOLSCRIPT
 
 # Make executable
 chmod +x $PREFIX/bin/screensh
@@ -271,3 +272,7 @@ echo -e "${GREEN}screensh help${NC} - Show help information"
 echo -e "${GREEN}screensh quick${NC} - Start with default settings\n"
 echo -e "${RED}Make sure you have granted storage permission:${NC}"
 echo -e "${GREEN}termux-setup-storage${NC}\n"
+EOL
+
+chmod +x install.sh
+./install.sh
