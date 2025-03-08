@@ -98,7 +98,11 @@ def check_adb_connection():
                 return True
                 
             time.sleep(0.25)
-    
+    # Kill any existing ADB server and restart it
+print(f"\n{BLUE}Restarting ADB server...{RESET}")
+subprocess.run(["adb", "kill-server"], capture_output=True)
+subprocess.run(["adb", "start-server"], capture_output=True)
+time.sleep(2)  # Give it a moment to initialize
     print(f"\n{RED}No devices found!{RESET}")
     print(f"\nPlease ensure:")
     print(f"1. USB debugging is enabled on the target device")
